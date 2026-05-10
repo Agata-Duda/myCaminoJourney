@@ -1,0 +1,14 @@
+<h2>Photos</h2>
+
+<div>
+  <input type="file" accept="image/*" multiple (change)="onFilesSelected($event)">
+</div>
+
+<div class="gallery" *ngIf="photos.length">
+  <div class="photo" *ngFor="let p of photos; let i = index">
+    <img [src]="p" alt="Photo">
+    <button (click)="remove(i)">Remove</button>
+  </div>
+</div>
+
+<div *ngIf="!photos.length">No photos yet.</div>

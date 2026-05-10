@@ -1,0 +1,18 @@
+<h2>Journey</h2>
+
+<div>
+  <label>Upload GPX from Polarsteps:
+    <input type="file" accept=".gpx" (change)="onGpxSelected($event)">
+  </label>
+</div>
+
+<div *ngIf="loading">Parsing GPX...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<div *ngIf="track?.length">
+  <h3>Track points ({{ track.length }})</h3>
+  <ul>
+    <li *ngFor="let p of track">{{ p.lat }}, {{ p.lon }} {{ p.time ? (' - ' + p.time) : '' }}</li>
+  </ul>
+</div>
+<div *ngIf="!track || track.length === 0">No track loaded.</div>
